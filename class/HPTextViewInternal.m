@@ -142,4 +142,10 @@
     }
 }
 
+- (void)cut:(id)sender
+{
+    [UIPasteboard generalPasteboard].string = self.text;
+    [super cut:sender];
+}
+
 @end
