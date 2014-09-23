@@ -123,4 +123,23 @@
 	[self setNeedsDisplay];
 }
 
+#pragma mark - Override next responder
+- (UIResponder *)nextResponder
+{
+    if (self.overrideNextResponder) {
+        return self.overrideNextResponder;
+    } else {
+        return [super nextResponder];
+    }
+}
+
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender
+{
+    if (self.overrideNextResponder) {
+        return NO;
+    } else {
+        return [super canPerformAction:action withSender:sender];
+    }
+}
+
 @end
